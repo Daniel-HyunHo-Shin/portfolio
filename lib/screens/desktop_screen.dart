@@ -25,37 +25,58 @@ class _DesktopScreenState extends State<DesktopScreen> {
 
   List<ExperienceTile> allExperiences = [
     const ExperienceTile(
-      icon: Icon(Icons.school),
-      title: 'KAUST PhD Student, Statistics',
+      icon: Icon(Icons.business),
+      title: 'Manager at English Fella',
       subtitle:
-          'Voluntarily withdrew from a doctoral program to pursue alternative career opportunities',
-      category: Experience.education,
-    ),
-    const ExperienceTile(
-      icon: Icon(Icons.school),
-      title: 'Korean Nation Open University, Statistics',
-      subtitle: 'Logjfksngjisng fnodsgfos gosjo',
-      category: Experience.education,
-    ),
-    const ExperienceTile(
-      icon: Icon(Icons.school),
-      title: 'Maimi University, Economics',
-      subtitle: 'Logjfksngjisng fnodsgfos gosjo',
-      category: Experience.education,
-    ),
-    const ExperienceTile(
-      icon: Icon(Icons.school),
-      title: 'University of Seoul, Economics',
-      subtitle: 'Logjfksngjisng fnodsgfos gosjo',
-      category: Experience.education,
-    ),
-    const ExperienceTile(
-      icon: Icon(Icons.school),
-      title: 'University of Seoul, Economics',
-      subtitle: 'Logjfksngjisng fnodsgfos gosjo',
+          'Managed operations at the English Fella language institute, overseeing educational program design and implementation. Collaborated with team members to create a conducive learning environment for students. Location: Cebu, Central Visayas, Philippines.',
       category: Experience.work,
     ),
-    // Add more ExperienceTile here...
+    const ExperienceTile(
+      icon: Icon(Icons.school),
+      title: 'PhD Student, Statistics - KAUST',
+      subtitle:
+          'Pursued advanced research in statistical models and methodologies. Decided to withdraw to explore career opportunities more aligned with my professional goals.',
+      category: Experience.education,
+    ),
+    const ExperienceTile(
+      icon: Icon(Icons.school),
+      title: 'Bachelor of Science, Statistics - Korea National Open University',
+      subtitle: 'Logjfksngjisng fnodsgfos gosjo',
+      category: Experience.education,
+    ),
+    const ExperienceTile(
+      icon: Icon(Icons.business),
+      title: 'First Lieutenant at Republic of Korea Air Force',
+      subtitle:
+          'Served as First Lieutenant in the Republic of Korea Air Force, leading and managing personnel in various operations. Developed strong leadership and teamwork skills.',
+      category: Experience.work,
+    ),
+    const ExperienceTile(
+      icon: Icon(Icons.school),
+      title: 'Bachelor of Science, Economics - University of Seoul',
+      subtitle: 'Logjfksngjisng fnodsgfos gosjo',
+      category: Experience.education,
+    ),
+    const ExperienceTile(
+      icon: Icon(Icons.business),
+      title: 'Summer Research Student at Miami University',
+      subtitle:
+          'Participated in a short-term research program at Miami University during the summer. Gained hands-on experience in conducting academic research.',
+      category: Experience.work,
+    ),
+    const ExperienceTile(
+      icon: Icon(Icons.school),
+      title: 'Bachelor of Science, Economics - Miami University',
+      subtitle: 'Logjfksngjisng fnodsgfos gosjo',
+      category: Experience.education,
+    ),
+    const ExperienceTile(
+      icon: Icon(Icons.business),
+      title: 'Intern at Korea Trade Insurance Corporation (Ksure)',
+      subtitle:
+          'Completed a two-month internship at Ksure, gaining industry experience and learning about trade insurance operations.',
+      category: Experience.work,
+    ),
   ];
 
   late List<ExperienceTile> displayedExperiences;
@@ -80,71 +101,139 @@ class _DesktopScreenState extends State<DesktopScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Daniel HyunHo Shin',
-          style: Pallete.heading4,
-        ),
-        toolbarHeight: 60, // Set this height
-        actions: [
-          TextButton(
-            onPressed: () {
-              Scrollable.ensureVisible(
-                aboutKey.currentContext!,
-                duration: const Duration(milliseconds: 400),
-              );
-            },
-            child: const Text('About'),
-          ),
-          TextButton(
-            onPressed: () {
-              Scrollable.ensureVisible(
-                experienceKey.currentContext!,
-                duration: const Duration(milliseconds: 400),
-              );
-            },
-            child: const Text(
-              'Experience',
-              style: Pallete.paragraphM,
-            ),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'Projects',
-              style: Pallete.paragraphM,
-            ),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'Contact',
-              style: Pallete.paragraphM,
-            ),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /// About me Section
-            ///
-            AboutMeSection(aboutKey: aboutKey),
-
-            const SizedBox(
-              height: 60,
-            ),
-
-            /// Experience Section
-            ///
-            ExperienceSection(
-              experienceKey: experienceKey,
-              filterExperiences: filterExperiences,
-              displayedExperiences: displayedExperiences,
-            ),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.topRight,
+          colors: [
+            Color(0xff075f8e),
+            Color(0xff66e5ec),
+            Color(0xfffd5538),
           ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              'Daniel HyunHo Shin',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ),
+          toolbarHeight: 60, // Set this height
+          actions: [
+            TextButton(
+              onPressed: () {
+                Scrollable.ensureVisible(
+                  aboutKey.currentContext!,
+                  duration: const Duration(milliseconds: 400),
+                );
+              },
+              child: Text(
+                'About',
+                style: Pallete.paragraphM
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Scrollable.ensureVisible(
+                  experienceKey.currentContext!,
+                  duration: const Duration(milliseconds: 400),
+                );
+              },
+              child: Text(
+                'Experience',
+                style: Pallete.paragraphM
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'Projects',
+                style: Pallete.paragraphM
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'Contact',
+                style: Pallete.paragraphM
+                    .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(width: 30),
+          ],
+        ),
+        body: Container(
+          clipBehavior: Clip.hardEdge,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(45),
+              topRight: Radius.circular(45),
+            ),
+          ),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              /// About me Section
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 1280),
+                  child: AboutMeSection(aboutKey: aboutKey),
+                ),
+              ),
+
+              const SizedBox(
+                height: 60,
+              ),
+
+              /// Experience Section
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 1280),
+                  child: ExperienceSection(
+                    experienceKey: experienceKey,
+                    filterExperiences: filterExperiences,
+                    displayedExperiences: displayedExperiences,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              // Project Section
+              Align(
+                alignment: Alignment.topCenter,
+                child: SizedBox(
+                    key: projectsKey,
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/portfolio.png',
+                                width: 200,
+                              ),
+                              Container()
+                            ],
+                          ),
+                        ),
+                      ],
+                    )),
+              )
+            ],
+          ),
         ),
       ),
     );

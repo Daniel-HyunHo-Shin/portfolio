@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/models/experience_model.dart';
 
 import '../Theme/pallete.dart';
+import '../models/experience_model.dart';
 import 'experience_tile.dart';
 
-class ExperienceSection extends StatelessWidget {
+class ExperienceSection extends StatefulWidget {
   const ExperienceSection({
     super.key,
     required this.experienceKey,
@@ -13,79 +13,128 @@ class ExperienceSection extends StatelessWidget {
   });
 
   final GlobalKey experienceKey;
-
   final void Function(Experience experience) filterExperiences;
-
   final List<ExperienceTile> displayedExperiences;
+
+  @override
+  _ExperienceSectionState createState() => _ExperienceSectionState();
+}
+
+class _ExperienceSectionState extends State<ExperienceSection> {
+  Experience _selectedExperience = Experience.all;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 60,
-      key: experienceKey,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.1),
-        child: Center(
-          child: Column(
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          const Text('Experience', style: Pallete.heading2),
+          const SizedBox(
+            height: 8,
+          ),
+          const Text(
+            'Work & Education',
+            style: Pallete.subHeading,
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          SizedBox(
+            key: widget.experienceKey,
+          ),
+
+          /// For Categories of Experience
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Icon(
-                Icons.school,
-                size: 40,
-                color: Colors.red,
+              TextButton.icon(
+                style: TextButton.styleFrom(
+                  foregroundColor: _selectedExperience == Experience.all
+                      ? Colors.red
+                      : Colors.black,
+                ),
+                onPressed: () {
+                  widget.filterExperiences(Experience.all);
+                  setState(() {
+                    _selectedExperience = Experience.all;
+                  });
+                },
+                icon: const Icon(Icons.list, size: 30),
+                label: const Text(
+                  'All',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
               const SizedBox(
-                height: 20,
+                width: 8,
               ),
-              const Text('Experience', style: Pallete.heading2),
+              TextButton.icon(
+                style: TextButton.styleFrom(
+                  foregroundColor: _selectedExperience == Experience.education
+                      ? Colors.red
+                      : Colors.black,
+                ),
+                onPressed: () {
+                  widget.filterExperiences(Experience.education);
+                  setState(() {
+                    _selectedExperience = Experience.education;
+                  });
+                },
+                icon: const Icon(Icons.school, size: 30),
+                label: const Text(
+                  'Education',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
               const SizedBox(
-                height: 8,
+                width: 8,
               ),
-              const Text(
-                'Work & Education',
-                style: Pallete.subHeading,
+              TextButton.icon(
+                style: TextButton.styleFrom(
+                  foregroundColor: _selectedExperience == Experience.work
+                      ? Colors.red
+                      : Colors.black,
+                ),
+                onPressed: () {
+                  widget.filterExperiences(Experience.work);
+                  setState(() {
+                    _selectedExperience = Experience.work;
+                  });
+                },
+                icon: const Icon(Icons.work, size: 30),
+                label: const Text(
+                  'Work',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
-              const SizedBox(
-                height: 12,
-              ),
-
-              /// For Categories of Experience
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  OutlinedButton.icon(
-                    onPressed: () => filterExperiences(Experience.all),
-                    icon: const Icon(Icons.list),
-                    label: const Text('All'),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  OutlinedButton.icon(
-                    onPressed: () => filterExperiences(Experience.education),
-                    icon: const Icon(Icons.school),
-                    label: const Text('Education'),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  OutlinedButton.icon(
-                    onPressed: () => filterExperiences(Experience.work),
-                    icon: const Icon(Icons.work),
-                    label: const Text('Work'),
-                  ),
-                ],
-              ),
-
-              /// Expericne Content
-              ///
-              Expanded(
-                  child: ListView(
-                children: displayedExperiences,
-              ))
             ],
           ),
-        ),
+          const SizedBox(
+            height: 12,
+          ),
+
+          /// Expericne Content
+          Container(
+            height: 800,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: Colors.black,
+                width: 3,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView(
+                shrinkWrap: true,
+                children: widget.displayedExperiences,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

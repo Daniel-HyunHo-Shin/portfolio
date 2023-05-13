@@ -19,7 +19,10 @@ class Pallete {
   static const paragraphM =
       TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
 
-  static var darkModeAppTheme = ThemeData().copyWith(
+  static var appTheme = ThemeData().copyWith(
     useMaterial3: true,
+    textTheme: ThemeData().textTheme.apply(
+          fontFamily: 'GeneralSans',
+        ),
   );
 }

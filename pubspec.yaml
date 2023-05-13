@@ -60,8 +60,40 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/
     - assets/icons/
-    
+  fonts:
+    - family: GeneralSans
+      fonts:
+        - asset: assets/Fonts/GeneralSans-Bold.ttf
+        - asset: assets/Fonts/GeneralSans-BoldItalic.ttf
+          style: italic
+        - asset: assets/Fonts/GeneralSans-Extralight.ttf
+          weight: 200
+        - asset: assets/Fonts/GeneralSans-ExtralightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/Fonts/GeneralSans-Italic.ttf
+          style: italic
+        - asset: assets/Fonts/GeneralSans-Light.ttf
+          weight: 300
+        - asset: assets/Fonts/GeneralSans-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/Fonts/GeneralSans-Medium.ttf
+          weight: 500
+        - asset: assets/Fonts/GeneralSans-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/Fonts/GeneralSans-Regular.ttf
+        - asset: assets/Fonts/GeneralSans-Semibold.ttf
+          weight: 600
+        - asset: assets/Fonts/GeneralSans-SemiboldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/Fonts/GeneralSans-Variable.ttf
+        - asset: assets/Fonts/GeneralSans-VariableItalic.ttf
+          style: italic    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

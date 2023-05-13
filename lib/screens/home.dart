@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth >= 1000) {
-          return DesktopScreen();
+          return const DesktopScreen();
         } else {
           return const MobileScreen();
         }

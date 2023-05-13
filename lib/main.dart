@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: Pallete.darkModeAppTheme,
+      theme: Pallete.appTheme,
       debugShowCheckedModeBanner: false,
       home: const Home(),
     );
