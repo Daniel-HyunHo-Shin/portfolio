@@ -5,9 +5,11 @@ class AboutMeSection extends StatelessWidget {
   const AboutMeSection({
     super.key,
     required this.aboutKey,
+    required this.experienceKey,
   });
 
   final GlobalKey<State<StatefulWidget>> aboutKey;
+  final GlobalKey experienceKey;
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +72,14 @@ class AboutMeSection extends StatelessWidget {
                 decoration: BoxDecoration(border: Border.all()),
                 height: 48,
                 width: 138,
-                child: const InkWell(
-                  child: Center(
+                child: InkWell(
+                  onTap: () {
+                    Scrollable.ensureVisible(
+                      experienceKey.currentContext!,
+                      duration: const Duration(milliseconds: 400),
+                    );
+                  },
+                  child: const Center(
                     child: Text(
                       'Explore',
                       style: TextStyle(fontWeight: FontWeight.w600),

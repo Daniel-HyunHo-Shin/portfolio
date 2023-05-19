@@ -36,7 +36,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
             height: 8,
           ),
           const Text(
-            'Work & Education',
+            'Education & Work',
             style: Pallete.subHeading,
           ),
           const SizedBox(
@@ -104,7 +104,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                     _selectedExperience = Experience.work;
                   });
                 },
-                icon: const Icon(Icons.work, size: 30),
+                icon: const Icon(Icons.business, size: 30),
                 label: const Text(
                   'Work',
                   style: TextStyle(fontSize: 18),
@@ -126,11 +126,13 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                 width: 3,
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView(
-                shrinkWrap: true,
-                children: widget.displayedExperiences,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView(
+                  shrinkWrap: true,
+                  children: widget.displayedExperiences,
+                ),
               ),
             ),
           )

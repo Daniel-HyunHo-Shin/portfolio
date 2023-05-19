@@ -5,6 +5,7 @@ import '../models/experience_model.dart';
 import '../widgets/about_me_section.dart';
 import '../widgets/experience_section.dart';
 import '../widgets/experience_tile.dart';
+import '../widgets/project_section.dart';
 
 class DesktopScreen extends StatefulWidget {
   const DesktopScreen({super.key});
@@ -23,7 +24,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
 
   final contactKey = GlobalKey();
 
-  List<ExperienceTile> allExperiences = [
+  final List<ExperienceTile> allExperiences = [
     const ExperienceTile(
       icon: Icon(Icons.business),
       title: 'Manager at English Fella',
@@ -78,6 +79,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
       category: Experience.work,
     ),
   ];
+  // It will be initialized at initstate()
 
   late List<ExperienceTile> displayedExperiences;
 
@@ -87,6 +89,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
     displayedExperiences = List.from(allExperiences);
   }
 
+  /// When the function is called, it will change displayedExperience to selected Exeperience
   void filterExperiences(Experience category) {
     setState(() {
       if (category == Experience.all) {
@@ -101,6 +104,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -116,6 +120,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+          scrolledUnderElevation: 0,
           backgroundColor: Colors.transparent,
           title: const Padding(
             padding: EdgeInsets.only(left: 20),
@@ -181,6 +186,7 @@ class _DesktopScreenState extends State<DesktopScreen> {
             ),
           ),
           child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             shrinkWrap: true,
             children: [
               /// About me Section
@@ -188,7 +194,10 @@ class _DesktopScreenState extends State<DesktopScreen> {
                 alignment: Alignment.center,
                 child: Container(
                   constraints: const BoxConstraints(maxWidth: 1280),
-                  child: AboutMeSection(aboutKey: aboutKey),
+                  child: AboutMeSection(
+                    aboutKey: aboutKey,
+                    experienceKey: experienceKey,
+                  ),
                 ),
               ),
 
@@ -211,27 +220,12 @@ class _DesktopScreenState extends State<DesktopScreen> {
               const SizedBox(
                 height: 60,
               ),
-              // Project Section
-              Align(
-                alignment: Alignment.topCenter,
-                child: SizedBox(
-                    key: projectsKey,
-                    child: Column(
-                      children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/images/portfolio.png',
-                                width: 200,
-                              ),
-                              Container()
-                            ],
-                          ),
-                        ),
-                      ],
-                    )),
-              )
+
+              /// Project Section
+              const ProjectSection(),
+              const SizedBox(
+                height: 60,
+              ),
             ],
           ),
         ),
